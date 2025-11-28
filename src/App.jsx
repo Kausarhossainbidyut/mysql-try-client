@@ -40,7 +40,7 @@ const App = () => {
   const fetchStudents = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/students');
+      const response = await axios.get('https://mysql-try-backent.vercel.app/students');
       setStudents(response.data);
       toast.success('Students loaded successfully');
     } catch (err) {
@@ -64,7 +64,7 @@ const App = () => {
     try {
       if (editingId) {
         // Update existing student
-        await axios.put(`http://localhost:5000/students/${editingId}`, {
+        await axios.put(`https://mysql-try-backent.vercel.app/students/${editingId}`, {
           name,
           email,
           department
@@ -73,7 +73,7 @@ const App = () => {
         setEditingId(null);
       } else {
         // Add new student
-        await axios.post('http://localhost:5000/students', {
+        await axios.post('https://mysql-try-backent.vercel.app/students', {
           name,
           email,
           department
@@ -115,7 +115,7 @@ const App = () => {
     const toastId = toast.loading('Deleting student...');
     
     try {
-      await axios.delete(`http://localhost:5000/students/${id}`);
+      await axios.delete(`https://mysql-try-backent.vercel.app/students/${id}`);
       toast.success('Student deleted successfully');
       fetchStudents();
     } catch (err) {
